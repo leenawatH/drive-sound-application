@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import './pages/Starter_page.dart';
+import 'pages/Starter_page.dart';
 import './pages/Login_page.dart';
+import './pages/Search_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
         title: 'Drive sound',
         // home: StarterPage(),
-        home: LoginPage());
+        //home: LoginPage(),
+        home: SearchPage());
   }
 }
