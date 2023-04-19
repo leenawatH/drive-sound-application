@@ -1,21 +1,17 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 import 'component/Track.dart';
-import 'component/ListCard.dart';
 
-class DetailsPage extends StatefulWidget {
+class ResultPage extends StatefulWidget {
   final Track track;
 
-  const DetailsPage({Key? key, required this.track}) : super(key: key);
+  const ResultPage({Key? key, required this.track}) : super(key: key);
 
   @override
-  _DetailsPageState createState() => _DetailsPageState();
+  _ResultPageState createState() => _ResultPageState();
 }
 
-class _DetailsPageState extends State<DetailsPage> {
+class _ResultPageState extends State<ResultPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,12 +19,12 @@ class _DetailsPageState extends State<DetailsPage> {
       appBar: AppBar(
         backgroundColor: Colors.grey[900],
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.home),
+            icon: const Icon(Icons.home),
             onPressed: () =>
                 Navigator.popUntil(context, (route) => route.isFirst),
           ),
@@ -39,7 +35,7 @@ class _DetailsPageState extends State<DetailsPage> {
           child: Center(
             child: Text(
               widget.track.title,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 24.0,
                 fontWeight: FontWeight.bold,
@@ -76,10 +72,10 @@ class _DetailsPageState extends State<DetailsPage> {
                   height: 25.0,
                 ),
                 Padding(
-                  padding: EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: Text(
                     "Artists/Brand : ${widget.track.artist}",
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
@@ -87,32 +83,32 @@ class _DetailsPageState extends State<DetailsPage> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: Text(
                     "Date : ${widget.track.releaseDate}",
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
+                // Padding(
+                //   padding: const EdgeInsets.all(20.0),
+                //   child: Text(
+                //     "popularity : ${widget.track.popularity}",
+                //     style: const TextStyle(
+                //       color: Colors.black,
+                //       fontSize: 18.0,
+                //       fontWeight: FontWeight.bold,
+                //     ),
+                //   ),
+                // ),
                 Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: Text(
-                    "popularity : ${widget.track.popularity}",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: Text(
                     "Lyrics : ${widget.track.lyrics}",
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,

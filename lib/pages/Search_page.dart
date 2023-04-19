@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import './component/Track.dart';
 import './component/ListCard.dart';
-import 'DetailsPage.dart';
+import 'Result_page.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -15,6 +15,7 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   final TextEditingController _searchController = TextEditingController();
   List<Track> _tracks = [];
+  bool showNoResults = false;
 
   void _handleSearch(String query) {
     _searchTracks(query);
@@ -24,16 +25,17 @@ class _SearchPageState extends State<SearchPage> {
     if (query.isEmpty) {
       setState(() {
         _tracks = [];
+        showNoResults = false;
       });
       return;
     }
-    final clientId = 'c9229c368b5f4a95bab7b83236096d97';
-    final clientSecret = '53cd4795d5ee468a970982ffe1c371d7';
+    const clientId = 'c9229c368b5f4a95bab7b83236096d97';
+    const clientSecret = '53cd4795d5ee468a970982ffe1c371d7';
     final response = await http.post(
       Uri.parse('https://accounts.spotify.com/api/token'),
       headers: {
         'Authorization':
-            'Basic ' + base64Encode(utf8.encode('$clientId:$clientSecret')),
+            'Basic ${base64Encode(utf8.encode('$clientId:$clientSecret'))}',
       },
       body: {
         'grant_type': 'client_credentials',
@@ -57,6 +59,7 @@ class _SearchPageState extends State<SearchPage> {
       final List<dynamic> tracks = data['tracks']['items'];
       setState(() {
         _tracks = tracks.map((trackData) => Track.fromData(trackData)).toList();
+        showNoResults = _tracks.isEmpty;
       });
     } else {
       throw Exception('Failed to load tracks');
@@ -77,11 +80,15 @@ class _SearchPageState extends State<SearchPage> {
     final response = await http.get(url);
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      final lyrics = data['message']['body']['lyrics']['lyrics_body'];
-      if (lyrics is String) {
-        return lyrics.split('*').first;
+      final message = data['message'];
+      if (message != null && message['header']['status_code'] == 200) {
+        final body = message['body'];
+        final lyrics = body['lyrics'];
+        if (lyrics != null && lyrics['lyrics_body'] is String) {
+          return lyrics['lyrics_body'].split('*').first;
+        }
       }
-      return lyrics;
+      return 'No lyrics found';
     } else {
       throw Exception('Failed to load lyrics');
     }
@@ -96,7 +103,7 @@ class _SearchPageState extends State<SearchPage> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => DetailsPage(track: track),
+          builder: (context) => ResultPage(track: track),
         ),
       );
     });
@@ -106,27 +113,48 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Search Page',
-          style: TextStyle(color: Colors.black),
-        ),
+        centerTitle: false,
+        titleSpacing: 0.0,
         backgroundColor: Colors.white10,
         elevation: 0.0,
+        title: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 20.0), // Add this SizedBox
+              Text(
+                "Find your song",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24.0,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 32.0),
+        padding: const EdgeInsets.symmetric(horizontal: 32.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 25.0),
+            const SizedBox(height: 10.0),
             TextField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Search...',
               ),
               controller: _searchController,
               onChanged: _handleSearch,
             ),
-            SizedBox(height: 32.0),
+            const SizedBox(height: 32.0),
+            showNoResults
+                ? const Text(
+                    'No results found',
+                    style: TextStyle(fontSize: 16.0),
+                  )
+                : Container(),
             Expanded(
               child: ListView.builder(
                 itemCount: _tracks.length,

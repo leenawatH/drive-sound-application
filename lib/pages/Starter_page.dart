@@ -67,11 +67,11 @@ class StarterPage extends StatelessWidget {
                 const SizedBox(height: 16.0),
                 ElevatedButton(
                   onPressed: () {},
-                  child: Text('Join us'),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(
-                        Color.fromARGB(255, 70, 70, 70)),
+                        const Color.fromARGB(255, 70, 70, 70)),
                   ),
+                  child: const Text('Join us'),
                 ),
               ],
             ),

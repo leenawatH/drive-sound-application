@@ -22,30 +22,31 @@ class _LoginPageState extends State<LoginPage> {
       body: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height,
-          padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 120.0),
+          padding:
+              const EdgeInsets.symmetric(horizontal: 40.0, vertical: 120.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
+              const Text(
                 'Log In',
                 style: TextStyle(
                   fontSize: 30.0,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 30.0),
-              TextField(
+              const SizedBox(height: 30.0),
+              const TextField(
                 decoration: InputDecoration(
                   labelText: 'Email',
                   border: OutlineInputBorder(),
                 ),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               TextField(
                 obscureText: !_showPassword,
                 decoration: InputDecoration(
                   labelText: 'Password',
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   suffixIcon: GestureDetector(
                     onTap: _togglePasswordVisibility,
                     child: Icon(
@@ -54,11 +55,11 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               Expanded(
                 child: Container(),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {
                   // TODO: Implement login functionality
@@ -72,9 +73,9 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),
-                child: Text('Log In'),
+                child: const Text('Log In'),
               ),
-              SizedBox(height: 15.0),
+              const SizedBox(height: 15.0),
               ElevatedButton(
                 onPressed: () {
                   // TODO: Implement sign up functionality
@@ -88,19 +89,19 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),
-                child: Text('Sign up'),
+                child: const Text('Sign up'),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               TextButton(
                 onPressed: () {
                   // TODO: Implement forgot password functionality
                 },
                 style: TextButton.styleFrom(
-                  primary: Colors.green,
+                  foregroundColor: Colors.green,
                 ),
-                child: Text('Forget your password?'),
+                child: const Text('Forget your password?'),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
             ],
           ),
         ),

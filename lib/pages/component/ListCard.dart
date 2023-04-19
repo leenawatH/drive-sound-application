@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 class ListCard extends StatelessWidget {
   final String title;
@@ -24,7 +21,7 @@ class ListCard extends StatelessWidget {
         ),
         title: Text(title),
         subtitle: Text(artists),
-        trailing: Icon(Icons.more_vert),
+        trailing: const Icon(Icons.more_vert),
       ),
     );
   }
