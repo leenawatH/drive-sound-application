@@ -50,11 +50,13 @@ class _HomePageState extends State<HomePage> {
       'api.spotify.com',
       '/v1/search',
       {
-        'q': 'year:2020-2023',
+        'q': 'year:2023',
         'type': 'track',
-        'market': 'US',
+        'market': 'TH',
         'limit': '3',
+        'offset': '0',
         'sort_by': 'popularity',
+        'sort_dir': 'desc'
       },
     );
     final response2 = await http.get(
@@ -67,6 +69,12 @@ class _HomePageState extends State<HomePage> {
     if (response2.statusCode == 200) {
       final data2 = jsonDecode(response2.body);
       final List<dynamic> tracks = data2['tracks']['items'];
+
+      tracks.sort((a, b) {
+        final popularity1 = a['popularity'];
+        final popularity2 = b['popularity'];
+        return popularity2.compareTo(popularity1);
+      });
 
       final List<Track> topTracks = tracks.map<Track>((trackData) {
         final title = trackData['name'];
@@ -100,9 +108,11 @@ class _HomePageState extends State<HomePage> {
       {
         'q': 'year:2023',
         'type': 'track',
-        'market': 'US',
+        'market': 'TH',
         'limit': '3',
-        'sort_by': 'releaseDate',
+        'offset': '0',
+        'sort_by': 'release_date',
+        'sort_dir': 'desc'
       },
     );
     final response3 = await http.get(
@@ -114,6 +124,12 @@ class _HomePageState extends State<HomePage> {
     if (response3.statusCode == 200) {
       final data2 = jsonDecode(response3.body);
       final List<dynamic> tracks = data2['tracks']['items'];
+
+      tracks.sort((a, b) {
+        final releaseDate1 = DateTime.parse(a['album']['release_date']);
+        final releaseDate2 = DateTime.parse(b['album']['release_date']);
+        return releaseDate2.compareTo(releaseDate1);
+      });
 
       final List<Track> newTracks = tracks.map<Track>((trackData) {
         final title = trackData['name'];

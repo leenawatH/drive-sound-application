@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {
-                  // TODO: Implement login functionality
+                  Navigator.pushNamed(context, '/home');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,

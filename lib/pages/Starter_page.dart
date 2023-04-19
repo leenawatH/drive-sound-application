@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Login_page.dart';
 
 class StarterPage extends StatelessWidget {
   const StarterPage({Key? key}) : super(key: key);
@@ -66,7 +67,9 @@ class StarterPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 16.0),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/login');
+                  },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(
                         const Color.fromARGB(255, 70, 70, 70)),
