@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'component/Track.dart';
+import 'MainHome_page.dart';
 
 class ResultPage extends StatefulWidget {
   final Track track;
@@ -24,10 +25,13 @@ class _ResultPageState extends State<ResultPage> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.home),
-            onPressed: () =>
-                Navigator.popUntil(context, (route) => route.isFirst),
-          ),
+              icon: const Icon(Icons.home),
+              onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MainHome(),
+                    ),
+                  )),
         ],
         elevation: 0.0,
         title: Expanded(
@@ -75,44 +79,28 @@ class _ResultPageState extends State<ResultPage> {
                   padding: const EdgeInsets.all(20.0),
                   child: Text(
                     "Artists/Brand : ${widget.track.artist}",
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Text(
                     "Date : ${widget.track.releaseDate}",
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.all(20.0),
-                //   child: Text(
-                //     "popularity : ${widget.track.popularity}",
-                //     style: const TextStyle(
-                //       color: Colors.black,
-                //       fontSize: 18.0,
-                //       fontWeight: FontWeight.bold,
-                //     ),
-                //   ),
-                // ),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Text(
-                    "Lyrics : ${widget.track.lyrics}",
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    "Lyrics",
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                  child: Text(
+                    "${widget.track.lyrics}",
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),
               ],

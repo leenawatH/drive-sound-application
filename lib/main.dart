@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import './pages/Starter_page.dart';
-import './pages/Login_page.dart';
-import './pages/MainHome_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+import './auth/Auth.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -22,11 +24,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const StarterPage(),
-      routes: {
-        '/login': (context) => const LoginPage(),
-        '/home': (context) => const MainHome(),
-      },
+      home: const AuthPage(),
     );
   }
 }

@@ -23,8 +23,8 @@ class AboutUsCard extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            width: 250,
-            height: 250,
+            width: 300,
+            height: 200,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.white10,
@@ -49,7 +49,7 @@ class AboutUsCard extends StatelessWidget {
           Text(
             email,
             style: TextStyle(
-              fontSize: 16,
+              fontSize: 11,
               fontWeight: FontWeight.bold,
             ),
           ),

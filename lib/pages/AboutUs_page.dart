@@ -52,11 +52,11 @@ class _AboutUsPageState extends State<AboutUsPage> {
                 Expanded(
                   flex: 3,
                   child: AboutUsCard(
-                    firstname: 'Phum',
-                    surname: 'a',
-                    email: 'adad@',
+                    firstname: 'Phumtham',
+                    surname: 'Akkarasiriwong',
+                    email: 'phumtham.akk@student.mahidol.ac.th',
                     imageUrl:
-                        'https://github.com/Drive-Sound/Drive-Sound/blob/main/Drive%20sound/web%20project/public/images/Picture_About_Us/oat.JPG?raw=true',
+                        'https://avatars.githubusercontent.com/u/98636379?v=4',
                   ),
                 ),
                 Expanded(child: Container()),
@@ -70,10 +70,11 @@ class _AboutUsPageState extends State<AboutUsPage> {
                 Expanded(
                   flex: 3,
                   child: AboutUsCard(
-                    firstname: 'John',
-                    surname: 'Doe',
-                    email: 'johndoe@example.com',
-                    imageUrl: 'https://randomuser.me/api/portraits/men/1.jpg',
+                    firstname: 'Leenawat',
+                    surname: 'Honglerdnapakul',
+                    email: 'leenawat.hon@student.mahidol.ac.th',
+                    imageUrl:
+                        'https://avatars.githubusercontent.com/u/98454141?v=4',
                   ),
                 ),
                 Expanded(child: Container()),
@@ -87,10 +88,11 @@ class _AboutUsPageState extends State<AboutUsPage> {
                 Expanded(
                   flex: 3,
                   child: AboutUsCard(
-                    firstname: 'Jane',
-                    surname: 'Doe',
-                    email: 'janedoe@example.com',
-                    imageUrl: 'https://randomuser.me/api/portraits/women/1.jpg',
+                    firstname: 'Phurich',
+                    surname: 'Kongmont',
+                    email: 'phurich.kon@student.mahidol.ac.th',
+                    imageUrl:
+                        'https://avatars.githubusercontent.com/u/98454214?v=4',
                   ),
                 ),
                 Expanded(child: Container()),

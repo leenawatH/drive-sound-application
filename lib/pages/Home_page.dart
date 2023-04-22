@@ -2,10 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:firebase_auth/firebase_auth.dart';
 import './component/Track.dart';
 import './component/BoxCard.dart';
 import 'Result_page.dart';
 import 'AboutUs_page.dart';
+import 'Starter_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -202,73 +204,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: false,
-        titleSpacing: 0.0,
-        backgroundColor: Colors.white10,
-        elevation: 0.0,
-        title: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              SizedBox(height: 20.0),
-              Text(
-                "Drive Sound",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24.0,
-                ),
-              ),
-            ],
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.menu),
-            color: Colors.black,
-            onPressed: () {
-              Scaffold.of(context).openEndDrawer();
-            },
-          ),
-        ],
-      ),
-      endDrawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.black38,
-              ),
-              child: Text(
-                'Drive Sound',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            // ListTile(
-            //   leading: const Icon(Icons.home),
-            //   title: const Text('Home'),
-            //   onTap: () {
-            //     // do something when the settings item is pressed
-            //   },
-            // ),
-            ListTile(
-              leading: const Icon(Icons.person),
-              title: const Text('About us'),
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => AboutUsPage()),
-                );
-              },
-            ),
-          ],
-        ),
-      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
