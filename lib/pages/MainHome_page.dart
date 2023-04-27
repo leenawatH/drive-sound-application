@@ -28,7 +28,7 @@ class _MainHomeState extends State<MainHome> {
     const ProfilePage(),
   ];
   static final List<String> _appBarTitles = <String>[
-    'Drive Soung',
+    'Drive Sound',
     'Find your song',
     'Account user',
   ];
